@@ -43,6 +43,7 @@ local filters = {
       from('info@mailer.netflix.com'),
       from('info@*'),
       from('noreply@energyreports.coned.com'),
+      from('*@*.microsoft.com'),
       from('noreply@smartmeters@coned.com'),
       from('rockport@e.rockport.com'),
       from('sendhappy@urbanstems.com'),
