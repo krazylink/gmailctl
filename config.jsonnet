@@ -32,6 +32,10 @@ local filters = {
       body('vaccine'),
       body('Vaccine'),
     ],
+  reddit:
+    [
+      from('noreply@redditmail.com'),
+    ],
   spam:
     [
       from('components@newsletters.electronicproducts.com'),
@@ -67,6 +71,7 @@ local filters = {
     { name: 'Me' },
     { name: 'WetzelFam' },
     { name: 'Orders' },
+    { name: 'Reddit' },
   ],
 
   rules: [
@@ -106,6 +111,17 @@ local filters = {
         markRead: false,
         markImportant: true,
         star: true,
+      },
+    },
+
+    {
+      filter: { or: filters.reddit },
+      actions: {
+        archive: true,
+        labels: ['Reddit'],
+        markRead: false,
+        markImportant: false,
+        star: false,
       },
     },
 
