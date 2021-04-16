@@ -32,6 +32,10 @@ local filters = {
       body('vaccine'),
       body('Vaccine'),
     ],
+  lists:
+    [
+      list('0afd67a5c5ed54633aface96f.421029.list-id.mcsv.net'),
+    ],
   reddit:
     [
       from('noreply@redditmail.com'),
@@ -71,8 +75,10 @@ local filters = {
   labels: [
     { name: 'Me' },
     { name: 'WetzelFam' },
+    { name: 'Lists' },
     { name: 'Orders' },
     { name: 'Reddit' },
+    { name: 'Reddit/SD' },
   ],
 
   rules: [
@@ -116,10 +122,20 @@ local filters = {
     },
 
     {
-      filter: { or: filters.reddit },
+      filter: and([from('noreply@redditmail.com'), sub('stopdrinking')]),
       actions: {
         archive: true,
-        labels: ['Reddit'],
+        labels: ['Reddit/SD'],
+        markRead: false,
+        markImportant: false,
+        star: false,
+      },
+    },
+
+    {
+      filter: { or: filters.lists },
+      actions: {
+        archive: true,
         markRead: false,
         markImportant: false,
         star: false,
