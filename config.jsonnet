@@ -101,8 +101,9 @@ local filters = {
     {
       filter: {
         or: [
-          { from: 'order*@*' },
-          { from: 'orders@*' },
+          from('order*@*'),
+          from('orders@*'),
+          sub('order'),
         ],
       },
       actions: {
