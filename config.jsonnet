@@ -78,6 +78,7 @@ local filters = {
     { name: 'Lists' },
     { name: 'Orders' },
     { name: 'Reddit' },
+    { name: 'Reddit/SD' },
   ],
 
   rules: [
@@ -118,6 +119,17 @@ local filters = {
         markRead: false,
         markImportant: true,
         star: true,
+      },
+    },
+
+    {
+      filter: and([from('noreply@redditmail.com'), sub('stopdrinking')]),
+      actions: {
+        archive: true,
+        labels: ['Reddit/SD'],
+        markRead: false,
+        markImportant: false,
+        star: false,
       },
     },
 
