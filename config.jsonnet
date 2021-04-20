@@ -40,6 +40,10 @@ local filters = {
     [
       from('noreply@redditmail.com'),
     ],
+  bank:
+    [
+      from('notes@email.pnc.com'),
+    ],
   spam:
     [
       from('components@newsletters.electronicproducts.com'),
@@ -77,6 +81,7 @@ local filters = {
     { name: 'WetzelFam' },
     { name: 'Lists' },
     { name: 'Orders' },
+    { name: 'Bank' },
     { name: 'Reddit' },
     { name: 'Reddit/SD' },
   ],
@@ -87,6 +92,17 @@ local filters = {
       actions: {
         labels: ['Me'],
         markImportant: true,
+        star: true,
+      },
+    },
+
+    {
+      filter: { or: filters.bank },
+      actions: {
+        labels: ['Bank'],
+        archive: true,
+        markImportant: true,
+        markRead: false,
       },
     },
 
@@ -104,6 +120,7 @@ local filters = {
           from('order*@*'),
           from('orders@*'),
           sub('order'),
+          sub('shipped'),
         ],
       },
       actions: {
