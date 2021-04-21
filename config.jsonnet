@@ -43,6 +43,7 @@ local filters = {
   bank:
     [
       from('notes@email.pnc.com'),
+      from('webbillpay@pncbank.customercenter.net'),
     ],
   spam:
     [
